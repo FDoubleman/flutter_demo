@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/BaseWidgetPage.dart';
 import 'package:flutter_app/DartType.dart';
+import 'package:flutter_app/Shopping/Shopping.dart';
+import 'package:flutter_app/TutorialHome.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
@@ -25,7 +27,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
       ),
 //      home: MyHomePage(title: 'Flutter 数据类型'),
-      home: MyScaffold(),
+//      home: MyScaffold(),
+//      home: TutorialHome(),
+      home: ShoppingList(products: <Product>[
+        Product(name: "鸡蛋0"),
+        Product(name: "鸡蛋1"),
+        Product(name: "鸡蛋2"),
+        Product(name: "鸡蛋3"),
+        Product(name: "鸡蛋4"),
+        Product(name: "鸡蛋5"),
+        Product(name: "鸡蛋6"),
+      ]),
 //      routes: ,
     );
   }
