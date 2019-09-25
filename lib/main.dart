@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
       ),
 //      home: MyHomePage(title: 'Flutter 数据类型'),
-      home: BaseWidgetPage(title: '基本widget'),
+      home: MyScaffold(),
 //      routes: ,
     );
   }
