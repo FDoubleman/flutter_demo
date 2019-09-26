@@ -26,6 +26,7 @@ class TutorialHome extends StatelessWidget {
             },
           )
         ],
+
       ),
       body: Center(
         child: Column(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/BaseWidgetPage.dart';
 import 'package:flutter_app/DartType.dart';
+import 'package:flutter_app/PageRoute/FirstPage.dart';
 import 'package:flutter_app/Shopping/Shopping.dart';
 import 'package:flutter_app/TutorialHome.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,6 +13,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // var list = List<Product>();
+    List list =
+        List<Product>.generate(100, (index) => Product(name: "鸡蛋  $index"));
+
     return MaterialApp(
       title: 'Flutter 数据类型',
       theme: ThemeData(
@@ -26,18 +31,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.pink,
       ),
-//      home: MyHomePage(title: 'Flutter 数据类型'),
+      home: MyHomePage(title: 'Flutter 数据类型'),
 //      home: MyScaffold(),
 //      home: TutorialHome(),
-      home: ShoppingList(products: <Product>[
-        Product(name: "鸡蛋0"),
-        Product(name: "鸡蛋1"),
-        Product(name: "鸡蛋2"),
-        Product(name: "鸡蛋3"),
-        Product(name: "鸡蛋4"),
-        Product(name: "鸡蛋5"),
-        Product(name: "鸡蛋6"),
-      ]),
+//      home: ShoppingList(products: list),
 //      routes: ,
     );
   }
@@ -107,35 +104,78 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            DartType(),
             RaisedButton(
               onPressed: () {
-                _ShowToast();
+                _pushBaseWidget();
               },
               child: Text(
-                "双击我爱你",
+                "基础组件",
               ), // 按钮添加文字
+              color: Colors.green, // 修改按钮颜色
+              textColor: Colors.white,
+            ),
+            RaisedButton(
+              onPressed: () {
+                _pushTutorialHome();
+              },
+              child: Text(
+                "系统自带AppBar和几个组件",
+              ), // 按钮添加文字
+              color: Colors.green, // 修改按钮颜色
+              textColor: Colors.white,
+            ),
+            RaisedButton(
+              onPressed: () {
+                _pushShopping();
+              },
+              child: Text(
+                "购物清单",
+              ), // 按钮添加文字
+              color: Colors.green, // 修改按钮颜色
+              textColor: Colors.white,
+            ),
+            RaisedButton(
+              onPressed: _pushPageRoute,
+              child: Text("页面路由"),
               color: Colors.green, // 修改按钮颜色
               textColor: Colors.white,
             )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  _pushShopping() {
+    List list =
+        List<Product>.generate(100, (index) => Product(name: "鸡蛋  $index"));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return ShoppingList(products: list);
+    }));
+  }
+
+  _pushTutorialHome() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return TutorialHome();
+    }));
+  }
+
+  _pushBaseWidget() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return MyScaffold();
+    }));
+  }
+
+  _pushPageRoute() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return FirstPage();
+    }));
   }
 
   _ShowToast() {
