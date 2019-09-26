@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/BaseWidgetPage.dart';
 import 'package:flutter_app/DartType.dart';
+import 'package:flutter_app/GesturePage.dart';
 import 'package:flutter_app/PageRoute/FirstPage.dart';
 import 'package:flutter_app/Shopping/Shopping.dart';
 import 'package:flutter_app/TutorialHome.dart';
@@ -141,6 +142,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("页面路由"),
               color: Colors.green, // 修改按钮颜色
               textColor: Colors.white,
+            ),
+            RaisedButton(
+              onPressed: _pushGesture,
+              child: Text("手势页面"),
+              color: Colors.green, // 修改按钮颜色
+              textColor: Colors.white,
             )
           ],
         ),
@@ -154,6 +161,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return ShoppingList(products: list);
+    }));
+  }
+
+  _pushGesture(){
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return GesturePage();
     }));
   }
 
