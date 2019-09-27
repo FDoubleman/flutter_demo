@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/generated/i18n.dart' as prefix0;
+import 'package:flutter/widgets.dart';
+
 
 class GesturePage extends StatefulWidget {
   @override
@@ -15,7 +16,10 @@ class _GesturePageState extends State<GesturePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "手势操作",
-      theme: ThemeData(primaryColor: Colors.deepPurple),
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple,
+      ),
+      // Material Design布局结构的基本实现。此类提供了用于显示drawer、snackbar和底部sheet的API。
       home: Scaffold(
         appBar: AppBar(
           title: Text("手势监听"),
@@ -26,8 +30,10 @@ class _GesturePageState extends State<GesturePage> {
             },
           ),
         ),
+        // 一个widget，它把它的子项放在可用空间的一小部分。关于布局算法的更多细节，见RenderFractionallySizedOverflowBox
         body: FractionallySizedBox(
           widthFactor: 1,
+          // 可以允许其子widget简单的堆叠在一起
           child: Stack(
             children: <Widget>[
               Column(
@@ -51,6 +57,7 @@ class _GesturePageState extends State<GesturePage> {
                     onTapUp: (TapUpDetails details) {
                       _pandStr("抬起");
                     },
+                    // 一个拥有绘制、定位、调整大小的 widget。
                     child: Container(
                       padding: EdgeInsets.all(70),
                       decoration: BoxDecoration(color: Colors.deepOrange),
@@ -71,12 +78,19 @@ class _GesturePageState extends State<GesturePage> {
                     _domove(details);
                   },
                   child: Container(
-                    width: 72,
-                    height: 72,
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(36)),
-                  ),
+                      width: 72,
+                      height: 72,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(36)),
+                      child: Text(
+                        "拖拉机",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      )),
                 ),
               )
             ],

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/AssetsUser.dart';
 import 'package:flutter_app/BaseWidgetPage.dart';
 import 'package:flutter_app/DartType.dart';
 import 'package:flutter_app/GesturePage.dart';
 import 'package:flutter_app/PageRoute/FirstPage.dart';
 import 'package:flutter_app/Shopping/Shopping.dart';
 import 'package:flutter_app/TutorialHome.dart';
+import 'package:flutter_app/WidgetLifeCycle.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -148,7 +151,19 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("手势页面"),
               color: Colors.green, // 修改按钮颜色
               textColor: Colors.white,
-            )
+            ),
+            RaisedButton(
+              onPressed: _pushAssetsUse,
+              child: Text("使用资源文件"),
+              color: Colors.green, // 修改按钮颜色
+              textColor: Colors.white,
+            ),
+            RaisedButton(
+              onPressed: _pushWidgetLifeCycle,
+              child: Text("widget生命周期"),
+              color: Colors.green, // 修改按钮颜色
+              textColor: Colors.white,
+            ),
           ],
         ),
       ),
@@ -164,7 +179,21 @@ class _MyHomePageState extends State<MyHomePage> {
     }));
   }
 
-  _pushGesture(){
+  _pushWidgetLifeCycle() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return WidgetLifeCycle2();
+    }));
+  }
+
+  _pushAssetsUse() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return AssetsUsePage();
+    }));
+  }
+
+  _pushGesture() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return GesturePage();
